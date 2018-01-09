@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<title>My first styled page</title>
+	<meta charset="utf-8">
+	<!-- Mobile 1st style -->
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<link rel="stylesheet" type="text/css" href="css/style.css">
+	<!-- Latest compiled and minified CSS -->
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+	<!-- Google CDN for JQuery -->
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+</head>
+
+<body>
+<div class="container">
+	<!-- Header -->
+	<h1>JS Pomodoro Timer</h1>
+
+	<p>Break Length</p><p>Session Length</p>
+	<p id="clock"> 500 </p>
+
+	<!-- Information -->
+	<div class="alert-info"> Use <kbd>shift + t</kbd> to increase timer, <kbd>shift + r</kbd> to reduce timer
+	</div>
+
+	<!-- Load javascript -->
+	<script src="./script.js"></script>
+
+	<!-- Progress Bar -->
+	<div class="progress">
+		<div class="progress-bar" role="progressbar" aria-valuenow="70"
+		aria-valuemin="0" aria-valuemax="100" style="width:70%">
+		70%
+		</div>
+	</div>
+
+	<!-- Controller buttons -->
+	<button type="button" class="btn btn-success" onclick="start(500)"><img id="ops" src="./resource/icons8-play-50.png"></button>
+	<button type="button" class="btn btn-danger" onclick="stop()"><img id="ops" src="./resource/icons8-stop-50.png"></button>
+	<button type="button" class="btn btn-warning" onclick="pause()"><img id="ops" src="./resource/icons8-pause-50.png"></button>
+	<button type="button" class="btn btn-info" onclick="reset(500)"><img id="ops" src="./resource/icons8-retweet-50.png"></button>
+
+	<!-- Quotes -->
+	<div class="well">
+		<blockquote>
+			<p>The Pomodoro Technique is a time management method developed by Francesco Cirillo in the late 1980s. The technique uses a timer to break down work into intervals, traditionally 25 minutes in length, separated by short breaks. <br><br>The technique has been widely popularized by dozens of apps and websites providing timers and instructions. Closely related to concepts such as timeboxing and iterative and incremental development used in software design, the method has been adopted in pair programming contexts.
+			<footer>From Wikipedia</footer>
+		</blockquote>
+	</div>
+</div>
+
+<footer>
+	<p>Made with Bootstrap</p>
+	<img src="./resource/icons8-linkedin-50.png">
+	<img src="./resource/icons8-github-50.png">
+</footer>
+
+</body>
+</html>

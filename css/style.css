@@ -1,0 +1,20 @@
+body {
+	text-align: center;
+}
+
+blockquote {
+	border-left: none;
+	text-align: left;
+}
+
+.progress {
+	margin-top: 10px;
+}
+
+#ops {
+	width: 50%;
+}
+
+#quote {
+	padding: 0 100px 0 100px;
+}
