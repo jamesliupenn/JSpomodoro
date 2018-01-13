@@ -1,45 +1,55 @@
 // Initiate variables
 let isCounting = false;
 let isPaused = false;
+let isStopped = false;
 let intervalID = 0;
 let storedCount = 0;
 let time = +document.getElementById("clock").innerHTML + ":00";
 
 function start() {
-	// Update the time again before starting to match configured time
-	time = +document.getElementById("clock").innerHTML + ":00";
-	let counts = clockToCounts(time);
-	if (isCounting == false) {
-		// This is for resuming a timer
-		if (isPaused == true) {
-			intervalID = setInterval(() => {
-				storedCount--;
-				this.moveBar();
-				document.getElementById("clock").innerHTML = this.countsToClock(storedCount);
-			}, 1000);
-			isCounting = true;
-		}
-		// This is for starting a timer
-		else if (isPaused == false) {
-			intervalID = setInterval(() => {
-				counts--;
-				storedCount = counts;
-				this.moveBar();
-				document.getElementById("clock").innerHTML = this.countsToClock(counts);
-			}, 1000);
-			isCounting = true;
-		}
-		// This is when the time strike ZERO
-		// else {
-		// 	window.alert("Time is up");
-		// 	this.reset();
-		// }
+	// If a stop was pressed before, do not start timer
+	if (isStopped == true) {
+		window.alert("Please reset the counter!");
 	}
+	else {
+		// Update the time again before starting to match configured time
+		time = +document.getElementById("clock").innerHTML + ":00";
+		let counts = clockToCounts(time);
+		// This prevents a second intervalID from being assigned
+		if (isCounting == false) {
+			// This is for resuming a timer
+			if (isPaused == true) {
+				intervalID = setInterval(() => {
+					storedCount--;
+					this.moveBar();
+					document.getElementById("clock").innerHTML = this.countsToClock(storedCount);
+				}, 1000);
+				isCounting = true;
+			}
+			// This is for starting a timer from the beginning
+			else if (isPaused == false) {
+				intervalID = setInterval(() => {
+					counts--;
+					storedCount = counts;
+					this.moveBar();
+					document.getElementById("clock").innerHTML = this.countsToClock(counts);
+				}, 1000);
+				isCounting = true;
+			}
+			// This is when the time strike ZERO
+			// else {
+			// 	window.alert("Time is up");
+			// 	this.reset();
+			// }
+		}
+	}
+
 }
 
 function stop() {
 	isPaused = false;
 	isCounting = false;
+	isStopped = true;
 	clearInterval(intervalID);
 	console.log("stop", isPaused, isCounting, storedCount);
 }
@@ -53,6 +63,7 @@ function pause() {
 }
 
 function reset() {
+	isStopped = false;
 	if (isCounting == false) {
 		document.getElementById("clock").innerHTML =
 			+document.getElementById("break").innerHTML + +document.getElementById("session").innerHTML;

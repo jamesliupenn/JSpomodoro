@@ -2,12 +2,14 @@ $(function() {
 	// Add break length
 	$("#break-plus").on("click", function(){
 		let breakValue = $("#break").text();
+		reset();
 		$("#break").text(+breakValue + 1);
 		$("#clock").text(+$("#break").text() + +$("#session").text());
 	});
 	// Minus break length
 	$("#break-minus").on("click", function(){
 		let breakValue = $("#break").text();
+		reset();
 		if (breakValue > 1) {
 			$("#break").text(+breakValue - 1);
 			$("#clock").text(+$("#break").text() + +$("#session").text());
@@ -17,12 +19,14 @@ $(function() {
 	// Add session length
 	$("#session-plus").on("click", function(){
 		let sessionValue = $("#session").text();
+		reset();
 		$("#session").text(+sessionValue + 1);
 		$("#clock").text(+$("#break").text() + +$("#session").text());
 	});
 	// Minus session legnth
 	$("#session-minus").on("click", function(){
 		let sessionValue = $("#session").text();
+		reset();
 		if (sessionValue > 1) {
 			$("#session").text(+sessionValue - 1);
 			$("#clock").text(+$("#break").text() + +$("#session").text());
