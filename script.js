@@ -1,28 +1,39 @@
 // Initiate variables
-var isCounting = false;
-var isPaused = false;
-var intervalID = 0;
-var storedCount = 0;
+let isCounting = false;
+let isPaused = false;
+let intervalID = 0;
+let storedCount = 0;
+let time = +document.getElementById("clock").innerHTML + ":00";
 
-function start(time) {
-	var counts = clockToCounts(time);
-	console.log(counts);
+function start() {
+	// Update the time again before starting to match configured time
+	time = +document.getElementById("clock").innerHTML + ":00";
+	let counts = clockToCounts(time);
 	if (isCounting == false) {
+		// This is for resuming a timer
 		if (isPaused == true) {
-			this.intervalID = setInterval(() => {
+			intervalID = setInterval(() => {
 				storedCount--;
+				this.moveBar();
 				document.getElementById("clock").innerHTML = this.countsToClock(storedCount);
 			}, 1000);
 			isCounting = true;
 		}
-		else {
+		// This is for starting a timer
+		else if (isPaused == false) {
 			intervalID = setInterval(() => {
 				counts--;
 				storedCount = counts;
+				this.moveBar();
 				document.getElementById("clock").innerHTML = this.countsToClock(counts);
 			}, 1000);
 			isCounting = true;
 		}
+		// This is when the time strike ZERO
+		// else {
+		// 	window.alert("Time is up");
+		// 	this.reset();
+		// }
 	}
 }
 
@@ -30,17 +41,21 @@ function stop() {
 	isPaused = false;
 	isCounting = false;
 	clearInterval(intervalID);
+	console.log("stop", isPaused, isCounting, storedCount);
 }
 
 function pause() {
 	isPaused = true;
 	isCounting = false;
 	clearInterval(intervalID);
+	console.log("pause", isPaused, isCounting, storedCount);
+
 }
 
-function reset(time) {
+function reset() {
 	if (isCounting == false) {
-		document.getElementById("clock").innerHTML = time;
+		document.getElementById("clock").innerHTML =
+			+document.getElementById("break").innerHTML + +document.getElementById("session").innerHTML;
 		isPaused = false;
 	}
 }
@@ -59,4 +74,16 @@ function clockToCounts(clock) {
 	// Now convert the strings to actual numbers before summing up
 	var counts = (+countArr[0] * 60) + (+countArr[1]);
 	return counts;
+}
+
+// Progress Bar function
+function moveBar() {
+    var elem = document.getElementById("bar"); 
+    var width = storedCount;
+    var id = setInterval(frame(), 1000);
+    function frame() {
+    	width--;
+    	console.log(width);
+    	elem.style.width = width + '%';
+    }
 }

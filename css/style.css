@@ -1,5 +1,61 @@
+* {
+	font-family: 'Poiret One', cursive;
+
+}
+
 body {
 	text-align: center;
+}
+
+.pomodoro-logo {
+	margin-top: 25px;
+	height: 100px;
+}
+
+.panel {
+	display: inline;
+}
+
+.panel-left {
+	float: left;
+	font-size: 2em;
+	/*border-style: solid;*/
+}
+
+.timer-left {
+	float: left;
+	font-size: 2em;
+	/*border-style: solid;*/
+    transform: translate(25%, 75%);
+}
+
+.panel-right {
+	float: right;
+	font-size: 2em;
+	/*border-style: solid;*/
+}
+
+.timer-right {
+	float: right;
+	font-size: 2em;
+	/*border-style: solid;*/
+	transform: translate(-25%, 75%);
+
+}
+
+.display {
+	display: inline-flex;
+	font-size: 90px;
+	/*border-style: solid;*/
+
+}
+
+.alert-info {
+	margin-top: 1em;
+	margin-left: auto;
+	margin-right: auto;
+	width: 35%;
+	/*border-style: solid;*/
 }
 
 blockquote {
@@ -9,6 +65,20 @@ blockquote {
 
 .progress {
 	margin-top: 10px;
+	width: 100%;
+	background-color: grey;
+}
+
+#bar {
+	width: 100%;
+	height: 30px;
+	background-color: green;
+}
+
+.controls {
+	margin-bottom: 20px;
+	/*border-style: solid;*/
+
 }
 
 #ops {
