@@ -4,7 +4,7 @@ let isPaused = false;
 let isStopped = false;
 let intervalID = 0;
 let storedCount = 0;
-let time = +document.getElementById("clock").innerHTML + ":00";
+let time = +document.getElementById("clock").innerHTML;
 
 function start() {
 	// If a stop was pressed before, do not start timer
@@ -13,8 +13,7 @@ function start() {
 	}
 	else {
 		// Update the time again before starting to match configured time
-		time = +document.getElementById("clock").innerHTML + ":00";
-		let counts = clockToCounts(time);
+
 		// This prevents a second intervalID from being assigned
 		if (isCounting == false) {
 			// This is for resuming a timer
@@ -28,6 +27,8 @@ function start() {
 			}
 			// This is for starting a timer from the beginning
 			else if (isPaused == false) {
+				time = +document.getElementById("clock").innerHTML + ":00";
+				let counts = clockToCounts(time);
 				intervalID = setInterval(() => {
 					counts--;
 					storedCount = counts;
