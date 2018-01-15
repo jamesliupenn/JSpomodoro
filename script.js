@@ -4,6 +4,7 @@ let isPaused = false;
 let isStopped = false;
 let intervalID = 0;
 let storedCount = 0;
+let fullbar = 0;
 let time = +document.getElementById("clock").innerHTML;
 
 function start() {
@@ -22,6 +23,7 @@ function start() {
 					storedCount--;
 					this.moveBar();
 					document.getElementById("clock").innerHTML = this.countsToClock(storedCount);
+					this.check(storedCount);
 				}, 1000);
 				isCounting = true;
 			}
@@ -29,22 +31,18 @@ function start() {
 			else if (isPaused == false) {
 				time = +document.getElementById("clock").innerHTML + ":00";
 				let counts = clockToCounts(time);
+				fullbar = counts;
 				intervalID = setInterval(() => {
 					counts--;
 					storedCount = counts;
 					this.moveBar();
 					document.getElementById("clock").innerHTML = this.countsToClock(counts);
+					this.check(counts);
 				}, 1000);
 				isCounting = true;
 			}
-			// This is when the time strike ZERO
-			// else {
-			// 	window.alert("Time is up");
-			// 	this.reset();
-			// }
 		}
 	}
-
 }
 
 function stop() {
@@ -52,15 +50,14 @@ function stop() {
 	isCounting = false;
 	isStopped = true;
 	clearInterval(intervalID);
-	console.log("stop", isPaused, isCounting, storedCount);
+	// console.log("stop", isPaused, isCounting, storedCount);
 }
 
 function pause() {
 	isPaused = true;
 	isCounting = false;
 	clearInterval(intervalID);
-	console.log("pause", isPaused, isCounting, storedCount);
-
+	// console.log("pause", isPaused, isCounting, storedCount);
 }
 
 function reset() {
@@ -68,6 +65,8 @@ function reset() {
 	if (isCounting == false) {
 		document.getElementById("clock").innerHTML =
 			+document.getElementById("break").innerHTML + +document.getElementById("session").innerHTML;
+		// Reset progress bar
+		document.getElementById("bar").style.width = 100 + '%'; 
 		isPaused = false;
 	}
 }
@@ -88,14 +87,17 @@ function clockToCounts(clock) {
 	return counts;
 }
 
+// A function to check countdown
+function check(counts) {
+	if (counts == 0) {
+		this.stop();
+		window.alert("Time is up!");
+	}
+}
+
 // Progress Bar function
 function moveBar() {
     var elem = document.getElementById("bar"); 
     var width = storedCount;
-    var id = setInterval(frame(), 1000);
-    function frame() {
-    	width--;
-    	console.log(width);
-    	elem.style.width = width + '%';
-    }
+    elem.style.width = width/fullbar * 100 + '%';
 }

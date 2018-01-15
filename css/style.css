@@ -78,7 +78,7 @@ blockquote {
 .progress {
 	margin-top: 10px;
 	width: 100%;
-	background-color: grey;
+	background-color: red;
 }
 
 #bar {
@@ -89,8 +89,6 @@ blockquote {
 
 .controls {
 	margin-bottom: 20px;
-	/*border-style: solid;*/
-
 }
 
 #ops {
