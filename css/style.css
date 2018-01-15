@@ -78,13 +78,11 @@ blockquote {
 .progress {
 	margin-top: 10px;
 	width: 100%;
-	background-color: red;
 }
 
-#bar {
+progress::-webkit-progress-bar {
+	background-color: green; 
 	width: 100%;
-	height: 30px;
-	background-color: green;
 }
 
 .controls {
