@@ -88,3 +88,15 @@ blockquote {
 #quote {
 	padding: 0 100px 0 100px;
 }
+
+.icons {
+	margin-bottom: 20px;
+}
+
+#github {
+	width: 40px;
+}
+
+#linkedin {
+	width: 30px;
+}
