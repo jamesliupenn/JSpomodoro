@@ -25,8 +25,6 @@ body {
 .timer-left {
 	float: left;
 	font-size: 2em;
-	/*border-style: solid;*/
-    transform: translate(25%, 75%);
 }
 
 .panel-right {
@@ -38,9 +36,19 @@ body {
 .timer-right {
 	float: right;
 	font-size: 2em;
-	/*border-style: solid;*/
-	transform: translate(-25%, 75%);
+}
 
+.circle {
+	border-style: solid;
+	width: 3em;
+	height: 3em;
+	border-radius: 1.5em;
+	background-color: black;
+	color: white;
+	padding-top: 0.75em;
+	margin-top: 0.75em;
+	margin-left: 0.5em;
+	margin-right: 0.5em;
 }
 
 .display {
@@ -54,8 +62,12 @@ body {
 	margin-top: 1em;
 	margin-left: auto;
 	margin-right: auto;
-	width: 35%;
+	width: 50%;
 	/*border-style: solid;*/
+}
+
+.info {
+	font-size: 1.5em;
 }
 
 blockquote {
